@@ -66,7 +66,11 @@ float zspNT4 = 0;
 float zspD2NT4 = 0;
 float zspD3NT4 = 0;
 
+int sDT1 = 0;
+int sDT2 = 0;
+
 bool DT1 = false;
+bool DT2 = false;
 
 void Draw(){
 	GLfloat red[] = { 1.0, 0, 0, 1.0 };
@@ -80,7 +84,12 @@ void Draw(){
 		if(DT1){
 			glTranslatef(3.0, -6.0, 6.0);
 			glRotatef(90, 0.0, 1.0, 0.0);
-		}				
+		}
+		
+		if(DT2){
+			glTranslatef(3.0, -6.0, 6.0);
+			glRotatef(90, 0.0, 1.0, 0.0);
+		}			
 		glutSolidSphere(0.5, 64, 64);
 		
 		// Bap Tay
@@ -97,6 +106,10 @@ void Draw(){
 			glTranslatef(3.0, 0.0, 0.0);
 			
 			if(DT1){
+				glRotatef(90, 0.0, 0.0, 1.0);
+			}
+			
+			if(DT2){
 				glRotatef(90, 0.0, 0.0, 1.0);
 			}
 			
@@ -119,6 +132,11 @@ void Draw(){
 					glRotatef(180, 1.0, 0.0, 0.0);
 				}
 				
+				if(DT2){
+					glRotatef(-45, 1.0, 0.0, 0.0);					
+					glRotatef(xspCoT, 1.0, 0.0, 0.0);
+				}
+				
 				glutSolidSphere(0.5, 64, 64);
 				
 				// Ban Tay
@@ -134,6 +152,11 @@ void Draw(){
 						
 						if(DT1){
 							glRotatef(-60, 0.0, 1.0, 0.0);
+						}
+						
+						if(DT2){
+							glRotatef(-45, 0.0, 1.0, 0.0);
+							glRotatef(yspNT, 0.0, 1.0, 0.0);
 						}
 						
 						glScalef(0.25, 0.25, 0.25);
@@ -153,6 +176,11 @@ void Draw(){
 							glTranslatef(2, 0, 0);
 							
 							if(DT1){
+								glRotatef(yspD2NT, 0.0, 1.0, 0.0);
+							}
+							
+							if(DT2){
+								glRotatef(45, 0.0, 1.0, 0.0);
 								glRotatef(yspD2NT, 0.0, 1.0, 0.0);
 							}
 							
@@ -177,6 +205,10 @@ void Draw(){
 							glRotatef(-20, 0.0, 1.0, 0.0);
 						}
 						
+						if(DT2){
+							glRotatef(-15, 0.0, 1.0, 0.0);
+						}
+						
 						glScalef(0.25, 0.25, 0.25);
 						glutSolidSphere(0.5, 64, 64);
 						
@@ -197,6 +229,10 @@ void Draw(){
 								glRotatef(zspD2NT1, 0.0, 0.0, 1.0);
 							}
 							
+							if(DT2){
+								glRotatef(-10, 0.0, 0.0, 1.0);
+							}
+							
 							glutSolidSphere(0.5, 64, 64);
 							
 							//Cube
@@ -214,6 +250,10 @@ void Draw(){
 								
 								if(DT1){
 									glRotatef(zspD3NT1, 0.0, 0.0, 1.0);
+								}
+								
+								if(DT2){
+									glRotatef(-10, 0.0, 0.0, 1.0);
 								}
 								
 								glutSolidSphere(0.5, 64, 64);
@@ -239,6 +279,11 @@ void Draw(){
 							glRotatef(-7.5, 0.0, 1.0, 0.0);
 						}
 						
+						if(DT2){
+							glRotatef(-6.5, 0.0, 1.0, 0.0);
+							glRotatef(zspNT2, 0.0, 0.0, 1.0);
+						}
+						
 						glutSolidSphere(0.5, 64, 64);
 						
 						// Cube
@@ -258,6 +303,11 @@ void Draw(){
 								glRotatef(zspD2NT2, 0.0, 0.0, 1.0);
 							}
 							
+							if(DT2){
+								glRotatef(-10, 0.0, 0.0, 1.0);
+								glRotatef(zspD2NT2, 0.0, 0.0, 1.0);								
+							}
+							
 							glutSolidSphere(0.5, 64, 64);
 							
 							//Cube
@@ -275,6 +325,10 @@ void Draw(){
 								
 								if(DT1){
 									glRotatef(zspD3NT2, 0.0, 0.0, 1.0);
+								}
+								
+								if(DT2){
+									glRotatef(-10, 0.0, 0.0, 1.0);
 								}
 								
 								glutSolidSphere(0.5, 64, 64);
@@ -300,6 +354,11 @@ void Draw(){
 							glRotatef(7.5, 0.0, 1.0, 0.0);
 						}
 						
+						if(DT2){
+							glRotatef(6.5, 0.0, 1.0, 0.0);
+							glRotatef(zspNT3, 0.0, 0.0, 1.0);
+						}
+						
 						glutSolidSphere(0.5, 64, 64);
 						
 						// Cube
@@ -316,6 +375,11 @@ void Draw(){
 							glTranslatef(2, 0, 0);
 							
 							if(DT1){
+								glRotatef(zspD2NT3, 0.0, 0.0, 1.0);
+							}
+							
+							if(DT2){
+								glRotatef(-10, 0.0, 0.0, 1.0);
 								glRotatef(zspD2NT3, 0.0, 0.0, 1.0);
 							}
 							
@@ -336,6 +400,10 @@ void Draw(){
 								
 								if(DT1){
 									glRotatef(zspD3NT3, 0.0, 0.0, 1.0);
+								}
+								
+								if(DT2){
+									glRotatef(-10, 0.0, 0.0, 1.0);
 								}
 								
 								glutSolidSphere(0.5, 64, 64);
@@ -361,6 +429,11 @@ void Draw(){
 							glRotatef(20, 0.0, 1.0, 0.0);
 						}
 						
+						if(DT2){
+							glRotatef(20, 0.0, 1.0, 0.0);
+							glRotatef(zspNT4, 0.0, 0.0, 1.0);
+						}
+						
 						glutSolidSphere(0.5, 64, 64);
 						
 						// Cube
@@ -380,6 +453,11 @@ void Draw(){
 								glRotatef(zspD2NT4, 0.0, 0.0, 1.0);
 							}
 							
+							if(DT2){
+								glRotatef(-10, 0.0, 0.0, 1.0);
+								glRotatef(zspD2NT3, 0.0, 0.0, 1.0);
+							}
+							
 							glutSolidSphere(0.5, 64, 64);
 							
 							//Cube
@@ -397,6 +475,10 @@ void Draw(){
 								
 								if(DT1){
 									glRotatef(zspD3NT4, 0.0, 0.0, 1.0);
+								}
+								
+								if(DT2){
+									glRotatef(-10, 0.0, 0.0, 1.0);
 								}
 								
 								glutSolidSphere(0.5, 64, 64);
@@ -450,38 +532,68 @@ void init(void){
     glEnable(GL_DEPTH_TEST);
 }
 
+void NamTay(void){
+	sDT1++;
+	yspD2NT += 0.2;
+	zspD2NT1 -= 0.1;
+	zspD2NT2 -= 0.1;
+	zspD2NT3 -= 0.1;
+	zspD2NT4 -= 0.1;
+	zspD3NT1 -= 0.2;
+	zspD3NT2 -= 0.2;
+	zspD3NT3 -= 0.2;
+	zspD3NT4 -= 0.2;
+	if(sDT1 > 450) return;
+	glutPostRedisplay();	
+}
+
+void BungTay(void){
+	sDT2++;
+	xspCoT -= 0.3;
+
+	if(yspNT < 11.25) yspNT += 0.25;
+	else yspNT -= 0.25;
+	
+	yspD2NT -= 0.1;
+	zspNT2 -= 0.1;
+	zspNT3 -= 0.1;
+	zspNT4 -= 0.1;
+	zspD2NT2 -= 0.1;
+	zspD2NT3 -= 0.1;
+	zspD2NT4 -= 0.1;
+	if(sDT2 > 450) return;
+	glutPostRedisplay();	
+}
+
 void keyboard(unsigned char key, int x, int y){
-	if(key == '.'){
-		DT1 = true;
-		glutPostRedisplay();
-	}
+	// kich hoat default
 	if(key == '0'){
 		DT1 = false;
+		DT2 = false;
 		glutPostRedisplay();
 	}
+	
+	// kich hoat dong tac 1
 	if(key == '1'){
-		yspD2NT += 2;
-		zspD2NT1 -= 1;
-		zspD2NT2 -= 1;
-		zspD2NT3 -= 1;
-		zspD2NT4 -= 1;
-		zspD3NT1 -= 2;
-		zspD3NT2 -= 2;
-		zspD3NT3 -= 2;
-		zspD3NT4 -= 2;
+		DT1 = true;
+		DT2 = false;
 		glutPostRedisplay();
 	}
-	if(key == '3'){
-		yspD2NT -= 2;
-		zspD2NT1 += 1;
-		zspD2NT2 += 1;
-		zspD2NT3 += 1;
-		zspD2NT4 += 1;
-		zspD3NT1 += 2;
-		zspD3NT2 += 2;
-		zspD3NT3 += 2;
-		zspD3NT4 += 2;
+	// kich hoat dong tac 2
+	if(key == '2'){
+		DT1 = false;
+		DT2 = true;
 		glutPostRedisplay();
+	}
+	
+	// DT1 --> nam tay
+	if(key == 'a'){
+		glutIdleFunc(NamTay);
+	}
+	
+	// DT2 --> bung tay
+	if(key == 'z'){
+		glutIdleFunc(BungTay);
 	}
 }
 
