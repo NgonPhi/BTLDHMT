@@ -4,12 +4,11 @@
 #include <iostream>
 using namespace std;
 
-void SetMaterialColor(GLfloat mat_diffuse[4]){
-	GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+void SetMaterialColor(GLfloat mat_color[4]){
 	GLfloat mat_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat mat_shininess[] = { 50.0 };
-	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_specular);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, mat_diffuse);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_color);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, mat_color);
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess);
 }
