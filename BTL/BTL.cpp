@@ -1,6 +1,8 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
+#include <iostream>
+using namespace std;
 
 void SetMaterialColor(GLfloat mat_diffuse[4]){
 	GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -71,6 +73,7 @@ int sDT2 = 0;
 
 bool DT1 = false;
 bool DT2 = false;
+bool DT3 = false;
 
 void Draw(){
 	GLfloat red[] = { 1.0, 0, 0, 1.0 };
@@ -113,6 +116,11 @@ void Draw(){
 				glRotatef(90, 0.0, 0.0, 1.0);
 			}
 			
+			if(DT3){				
+				glRotatef(90, 0.0, 0.0, 1.0);
+				glRotatef(zspKhT, 0.0, 0.0, 1.0);
+			}
+			
 			glutSolidSphere(0.5, 64, 64);
 			
 			// Cang Tay			
@@ -137,6 +145,12 @@ void Draw(){
 					glRotatef(xspCoT, 1.0, 0.0, 0.0);
 				}
 				
+				if(DT3){
+					glRotatef(-90, 1.0, 0.0, 0.0);					
+					//glRotatef(90, 0.0, 0.0, 1.0);					
+					glRotatef(xspCoT, 1.0, 0.0, 0.0);
+				}
+				
 				glutSolidSphere(0.5, 64, 64);
 				
 				// Ban Tay
@@ -157,6 +171,10 @@ void Draw(){
 						if(DT2){
 							glRotatef(-45, 0.0, 1.0, 0.0);
 							glRotatef(yspNT, 0.0, 1.0, 0.0);
+						}
+						
+						if(DT3){
+							glRotatef(-30, 0.0, 1.0, 0.0);
 						}
 						
 						glScalef(0.25, 0.25, 0.25);
@@ -195,7 +213,7 @@ void Draw(){
 								glutSolidCube(1.0);
 							glPopMatrix();
 						glPopMatrix();							
-					glPopMatrix();
+				 glPopMatrix();
 					
 					// Ngon Tay 1
 					glPushMatrix();
@@ -207,6 +225,10 @@ void Draw(){
 						
 						if(DT2){
 							glRotatef(-15, 0.0, 1.0, 0.0);
+						}
+						
+						if(DT3){
+							glRotatef(-10, 0.0, 1.0, 0.0);
 						}
 						
 						glScalef(0.25, 0.25, 0.25);
@@ -268,7 +290,7 @@ void Draw(){
 								glPopMatrix();
 							glPopMatrix();
 						glPopMatrix();							
-					glPopMatrix();
+				 glPopMatrix();
 					
 					// Ngon Tay 2
 					glPushMatrix();
@@ -282,6 +304,10 @@ void Draw(){
 						if(DT2){
 							glRotatef(-6.5, 0.0, 1.0, 0.0);
 							glRotatef(zspNT2, 0.0, 0.0, 1.0);
+						}
+						
+						if(DT3){
+							glRotatef(-3, 0.0, 1.0, 0.0);
 						}
 						
 						glutSolidSphere(0.5, 64, 64);
@@ -343,7 +369,7 @@ void Draw(){
 								glPopMatrix();
 							glPopMatrix();
 						glPopMatrix();							
-					glPopMatrix();
+				 glPopMatrix();
 					
 					// Ngon Tay 3
 					glPushMatrix();
@@ -357,6 +383,9 @@ void Draw(){
 						if(DT2){
 							glRotatef(6.5, 0.0, 1.0, 0.0);
 							glRotatef(zspNT3, 0.0, 0.0, 1.0);
+						}
+						if(DT3){
+							glRotatef(3, 0.0, 1.0, 0.0);
 						}
 						
 						glutSolidSphere(0.5, 64, 64);
@@ -418,7 +447,7 @@ void Draw(){
 								glPopMatrix();
 							glPopMatrix();
 						glPopMatrix();							
-					glPopMatrix();
+				 glPopMatrix();
 					
 					// Ngon Tay 4
 					glPushMatrix();
@@ -432,6 +461,10 @@ void Draw(){
 						if(DT2){
 							glRotatef(20, 0.0, 1.0, 0.0);
 							glRotatef(zspNT4, 0.0, 0.0, 1.0);
+						}
+						
+						if(DT3){
+							glRotatef(10, 0.0, 1.0, 0.0);
 						}
 						
 						glutSolidSphere(0.5, 64, 64);
@@ -493,11 +526,10 @@ void Draw(){
 								glPopMatrix();
 							glPopMatrix();
 						glPopMatrix();							
-					glPopMatrix();
-										
-				glPopMatrix();
-			glPopMatrix();
-		glPopMatrix();
+				 	glPopMatrix();										
+			 	glPopMatrix();
+		 	glPopMatrix();
+	 	glPopMatrix();
 	glPopMatrix();
 }
 
@@ -565,11 +597,29 @@ void BungTay(void){
 	glutPostRedisplay();	
 }
 
+bool chieu = true;
+void VayTay(void){	
+	if(zspKhT >= 10)
+		chieu = false;
+	if(zspKhT <= -10)
+		chieu = true;			
+	if(chieu){
+		zspKhT += 0.1;
+		xspCoT -= 0.2;
+	}	
+	else{
+		zspKhT -= 0.1;
+		xspCoT += 0.2;
+	}
+	glutPostRedisplay();	
+}
+
 void keyboard(unsigned char key, int x, int y){
 	// kich hoat default
 	if(key == '0'){
 		DT1 = false;
 		DT2 = false;
+		DT3 = false;
 		glutPostRedisplay();
 	}
 	
@@ -577,12 +627,21 @@ void keyboard(unsigned char key, int x, int y){
 	if(key == '1'){
 		DT1 = true;
 		DT2 = false;
+		DT3 = false;
 		glutPostRedisplay();
 	}
 	// kich hoat dong tac 2
 	if(key == '2'){
 		DT1 = false;
 		DT2 = true;
+		DT3 = false;
+		glutPostRedisplay();
+	}
+	// kich hoat dong tac 3
+	if(key == '3'){
+		DT1 = false;
+		DT2 = false;
+		DT3 = true;
 		glutPostRedisplay();
 	}
 	
@@ -592,8 +651,13 @@ void keyboard(unsigned char key, int x, int y){
 	}
 	
 	// DT2 --> bung tay
-	if(key == 'z'){
+	if(key == 's'){
 		glutIdleFunc(BungTay);
+	}
+	
+	// DT3 --> vay tay
+	if(key == 'd'){
+		glutIdleFunc(VayTay);
 	}
 }
 
